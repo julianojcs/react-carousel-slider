@@ -1,25 +1,14 @@
 import Image from "next/image";
 import styles from './styles.module.css';
 import Item from '@/components/Item';
-import { getPlaceholderImage } from '@/utils/images'
 import { items } from '@/utils/constants';
 
-const Carousel = async () => {
-  const itemWithPlaceholder = await Promise.all(
-    items.map(async (item) => {
-      const itemWithPlaceholder = await getPlaceholderImage(item.src)
-      return {
-        ...item,
-        src: itemWithPlaceholder.src,
-        placeholder: itemWithPlaceholder.placeholder,
-      }
-    }),
-  )
+const Carousel = () => {
   return (
     <div className={styles.carousel}>
         {/* list item */}
         <div className={styles.list}>
-          {itemWithPlaceholder.map((item, index) => (
+          {items.map((item, index) => (
             <Item
               key={index}
               src={item.src}
@@ -27,8 +16,6 @@ const Carousel = async () => {
               title={item.title}
               topic={item.topic}
               desc={item.desc}
-              placeholder='blur'
-              blurDataURL={item.placeholder}
             />
           ))}
         </div>
