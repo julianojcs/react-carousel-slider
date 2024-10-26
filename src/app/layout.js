@@ -1,7 +1,6 @@
 // import localFont from "next/font/local";
 import { Poppins } from 'next/font/google'
 import "./globals.css";
-import { getPlaceholderImage } from '@/utils/images'
 
 const poppins = Poppins({
   weight: ['100', '300', '400', '500', '600', '700', '800', '900'],
